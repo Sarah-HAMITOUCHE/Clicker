@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #16213e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#clicker {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    margin: 20px 0;
+}
+
+#clicker:active {
+    transform: scale(0.95);
+}
+
+#clicker img {
+    width: 50px;
+    height: 50px;
+}
+
+.item, .upgrade {
+    background-color: #0f3460;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buy-btn, .upgrade-btn {
+    background-color: #533483;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cost {
+    font-weight: bold;
+    color: #f9c74f;
+}
+
+.owned {
+    color: #90be6d;
+}
+
+/* ===== BOUTON RÉINITIALISATION ===== */
+.reset-btn {
+    background: linear-gradient(to bottom, #ff3a3a, #d10000);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 25px auto 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: block;
+    width: 80%;
+    max-width: 250px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .reset-btn:hover {
+    background: linear-gradient(to bottom, #ff5151, #e60000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .reset-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .reset-btn::after {
+    content: "⚠️";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+  
+  /* Animation de confirmation */
+  @keyframes resetFlash {
+    0% { background-color: #ff3a3a; }
+    50% { background-color: #ff9999; }
+    100% { background-color: #ff3a3a; }
+  }
+  
+  .reset-confirm {
+    animation: resetFlash 0.5s 3;
+  }
+  
+  /* ===== STYLE RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .reset-btn {
+      width: 90%;
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+    
+    .reset-btn::after {
+      right: 10px;
+      font-size: 16px;
+    }
+  }

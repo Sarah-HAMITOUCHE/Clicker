@@ -1,0 +1,39 @@
+{
+    "gameRules": {
+        "initialState": {
+            "points": 0,
+            "clickValue": 1,
+            "autoProduction": 0,
+            "itemsOwned": {
+                "guitare": 0,
+                "piano": 0,
+                "tenues": 0
+            },
+            "upgradesPurchased": {
+                "meilleurScript": false
+            }
+        },
+        "shopItems": {
+            "guitare": {
+                "cost": 50,
+                "production": 2
+            },
+            "piano": {
+                "cost": 150,
+                "production": 4
+            },
+            "tenues": {
+                "cost": 300,
+                "production": 6
+            }
+        },
+        "upgrades": {
+            "meilleurScript": {
+                "cost": 500,
+                "effect": "doubleClickValue"
+            }
+        },
+        "autoProductionInterval": 1000,
+        "resetConfirmation": "Voulez-vous vraiment tout réinitialiser ?"
+    }
+}

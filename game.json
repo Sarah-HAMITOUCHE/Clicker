@@ -35,5 +35,6 @@
         },
         "autoProductionInterval": 1000,
         "resetConfirmation": "Voulez-vous vraiment tout réinitialiser ?"
+        
     }
 }

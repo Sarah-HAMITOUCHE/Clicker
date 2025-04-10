@@ -1,132 +1,119 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a2e;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.game-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #16213e;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+html, body {
+  height: 100%;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Grille principale */
+.game-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  gap: 20px;
+  padding: 30px;
+}
+
+/* Zones latérales */
+.sidebar {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #0ff;
+}
+
+.sidebar p {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* Zone centrale */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #clicker {
-    background-color: #e94560;
-    color: white;
-    border: none;
-    padding: 15px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.1s;
-    margin: 20px 0;
+  font-size: 32px;
+  padding: 30px 60px;
+  background: linear-gradient(145deg, #ff005c, #ff7d00);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff005c;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
-#clicker:active {
-    transform: scale(0.95);
+#clicker:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff005c;
 }
 
-#clicker img {
-    width: 50px;
-    height: 50px;
+#floatingTextContainer {
+  height: 60px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.item, .upgrade {
-    background-color: #0f3460;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.floatingText {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffea00;
+  font-size: 22px;
+  animation: floatUp 1s ease-out forwards;
+  text-shadow: 0 0 10px #ffea00;
+  pointer-events: none;
 }
 
-.buy-btn, .upgrade-btn {
-    background-color: #533483;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
+@keyframes floatUp {
+  0% { opacity: 1; top: 20px; }
+  100% { opacity: 0; top: -30px; }
 }
 
-.cost {
-    font-weight: bold;
-    color: #f9c74f;
+button {
+  display: block;
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #222;
+  border: 2px solid #0ff;
+  color: #0ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
 }
 
-.owned {
-    color: #90be6d;
+button:hover {
+  background: #0ff;
+  color: #000;
+  transform: scale(1.05);
 }
 
-/* ===== BOUTON RÉINITIALISATION ===== */
-.reset-btn {
-    background: linear-gradient(to bottom, #ff3a3a, #d10000);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    margin: 25px auto 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    display: block;
-    width: 80%;
-    max-width: 250px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .reset-btn:hover {
-    background: linear-gradient(to bottom, #ff5151, #e60000);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .reset-btn:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .reset-btn::after {
-    content: "⚠️";
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-  }
-  
-  /* Animation de confirmation */
-  @keyframes resetFlash {
-    0% { background-color: #ff3a3a; }
-    50% { background-color: #ff9999; }
-    100% { background-color: #ff3a3a; }
-  }
-  
-  .reset-confirm {
-    animation: resetFlash 0.5s 3;
-  }
-  
-  /* ===== STYLE RESPONSIVE ===== */
-  @media (max-width: 600px) {
-    .reset-btn {
-      width: 90%;
-      padding: 10px 15px;
-      font-size: 14px;
-    }
-    
-    .reset-btn::after {
-      right: 10px;
-      font-size: 16px;
-    }
-  }
+h1 {
+  margin-bottom: 30px;
+  font-size: 36px;
+  text-shadow: 0 0 15px #0ff;
+}

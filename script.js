@@ -1,135 +1,74 @@
-// ========== CONFIGURATION DU JEU ==========
-let gameState = {
-  points: 0,
-  clickValue: 1,
-  autoProduction: 0,
-  itemsOwned: {
-    guitare: 0,
-    piano: 0,
-    tenues: 0
-  },
-  upgradesPurchased: {
-    meilleurScript: false
-  }
-};
+let score = 0;
+let clickPower = 1;
+let clickLevel = 1;
 
-// ========== ÉLÉMENTS DU DOM ==========
-const pointsDisplay = document.getElementById('points');
-const clickerBtn = document.getElementById('clicker');
-const resetBtn = document.getElementById('reset-btn');
-const shopItems = {
-  guitare: document.querySelector('[data-id="stagiaire"]'),
-  piano: document.querySelector('[data-id="camera"]'),
-  tenues: document.querySelector('[data-id="star"]')
-};
-const upgrades = {
-  meilleurScript: document.querySelector('[data-id="meilleur-script"]')
-};
+let ampCount = 0;
+let ampCost = 10;
 
-// ========== FONCTIONS PRINCIPALES ==========
+let bandCount = 0;
+let bandCost = 100;
 
-// Charge la sauvegarde
-function loadGame() {
-  const savedData = localStorage.getItem('filmClickerSave');
-  if (savedData) {
-    Object.assign(gameState, JSON.parse(savedData));
-  }
-  updateDisplay();
-}
+let upgradeCost = 50;
 
-// Sauvegarde la partie
-function saveGame() {
-  localStorage.setItem('filmClickerSave', JSON.stringify(gameState));
-}
+const scoreDisplay = document.getElementById("score");
+const clicker = document.getElementById("clicker");
+const buyAmp = document.getElementById("buyAmp");
+const buyBand = document.getElementById("buyBand");
+const upgradeClick = document.getElementById("upgradeClick");
 
-// Met à jour l'affichage
+const ampDisplay = document.getElementById("ampCount");
+const bandDisplay = document.getElementById("bandCount");
+const clickPowerDisplay = document.getElementById("clickPower");
+const clickLevelDisplay = document.getElementById("clickLevel");
+
 function updateDisplay() {
-  pointsDisplay.textContent = gameState.points;
-  
-  // Met à jour les compteurs d'objets possédés
-  for (const [item, element] of Object.entries(shopItems)) {
-    element.querySelector('.owned').textContent = gameState.itemsOwned[item];
-  }
-  
-  // Désactive les améliorations déjà achetées
-  if (gameState.upgradesPurchased.meilleurScript) {
-    upgrades.meilleurScript.querySelector('button').disabled = true;
-  }
+  scoreDisplay.textContent = Math.floor(score);
+  ampDisplay.textContent = ampCount;
+  bandDisplay.textContent = bandCount;
+  clickPowerDisplay.textContent = clickPower;
+  clickLevelDisplay.textContent = clickLevel;
+
+  buyAmp.textContent = `Acheter un Ampli (${ampCost} beats) - +1 beat/sec`;
+  buyBand.textContent = `Acheter un Groupe (${bandCost} beats) - +10 beats/sec`;
+  upgradeClick.textContent = `Améliorer le clic (${upgradeCost} beats) - x2 puissance`;
 }
 
-// Réinitialise le jeu
-function resetGame() {
-  if (confirm("Voulez-vous vraiment tout réinitialiser ?")) {
-    gameState = {
-      points: 0,
-      clickValue: 1,
-      autoProduction: 0,
-      itemsOwned: {
-        guitare: 0,
-        piano: 0,
-        tenues: 0
-      },
-      upgradesPurchased: {
-        meilleurScript: false
-      }
-    };
-    localStorage.removeItem('filmClickerSave');
-    updateDisplay();
-  }
-}
-
-// ========== ÉVÉNEMENTS ==========
-
-// Clic manuel
-clickerBtn.addEventListener('click', () => {
-  gameState.points += gameState.clickValue;
+clicker.addEventListener("click", () => {
+  score += clickPower;
   updateDisplay();
-  saveGame();
 });
 
-// Boutique
-for (const [item, element] of Object.entries(shopItems)) {
-  const btn = element.querySelector('button');
-  const cost = parseInt(element.getAttribute('data-cost'));
-  const production = parseInt(element.getAttribute('data-production'));
-  
-  btn.addEventListener('click', () => {
-    if (gameState.points >= cost) {
-      gameState.points -= cost;
-      gameState.autoProduction += production;
-      gameState.itemsOwned[item]++;
-      updateDisplay();
-      saveGame();
-    } else {
-      alert("Pas assez de points !");
-    }
-  });
-}
-
-// Améliorations
-upgrades.meilleurScript.querySelector('button').addEventListener('click', () => {
-  const cost = parseInt(upgrades.meilleurScript.getAttribute('data-cost'));
-  
-  if (gameState.points >= cost && !gameState.upgradesPurchased.meilleurScript) {
-    gameState.points -= cost;
-    gameState.clickValue *= 2;
-    gameState.upgradesPurchased.meilleurScript = true;
+buyAmp.addEventListener("click", () => {
+  if (score >= ampCost) {
+    score -= ampCost;
+    ampCount++;
+    ampCost = Math.floor(ampCost * 1.2);
     updateDisplay();
-    saveGame();
   }
 });
 
-// Réinitialisation
-resetBtn.addEventListener('click', resetGame);
+buyBand.addEventListener("click", () => {
+  if (score >= bandCost) {
+    score -= bandCost;
+    bandCount++;
+    bandCost = Math.floor(bandCost * 1.3);
+    updateDisplay();
+  }
+});
 
-// Production automatique
+upgradeClick.addEventListener("click", () => {
+  if (score >= upgradeCost) {
+    score -= upgradeCost;
+    clickLevel++;
+    clickPower *= 2;
+    upgradeCost = Math.floor(upgradeCost * 2);
+    updateDisplay();
+  }
+});
+
 setInterval(() => {
-  if (gameState.autoProduction > 0) {
-    gameState.points += gameState.autoProduction;
-    updateDisplay();
-    saveGame();
-  }
+  score += ampCount * 1 + bandCount * 10;
+  updateDisplay();
 }, 1000);
 
-// ========== INITIALISATION ==========
-loadGame();
+updateDisplay();

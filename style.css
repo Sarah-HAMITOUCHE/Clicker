@@ -7,10 +7,9 @@
 }
 
 html, body {
-  height: 100%;
-  font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
-  color: #fff;
+  background: #968f38;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #010101;
   overflow: hidden;
 }
 
@@ -26,18 +25,14 @@ html, body {
 
 /* Zones latérales */
 .sidebar {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.633);
+  border-radius: 2px;
+  padding: 
   height: 100%;
-  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.77);
   overflow-y: auto;
 }
 
-.sidebar h2 {
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px #0ff;
-}
 
 .sidebar p {
   margin-bottom: 10px;
@@ -54,19 +49,14 @@ html, body {
 
 #clicker {
   font-size: 32px;
-  padding: 30px 60px;
-  background: linear-gradient(145deg, #ff005c, #ff7d00);
   color: white;
   border: none;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #ff005c;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.3s;
 }
 
 #clicker:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 30px #ff005c;
 }
 
 #floatingTextContainer {
@@ -98,16 +88,16 @@ button {
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  background: #222;
-  border: 2px solid #0ff;
-  color: #0ff;
+  background: #c0a31464;
+  border: 2px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
 
 button:hover {
-  background: #0ff;
+  background: rgb(251, 251, 251);
   color: #000;
   transform: scale(1.05);
 }
@@ -115,5 +105,5 @@ button:hover {
 h1 {
   margin-bottom: 30px;
   font-size: 36px;
-  text-shadow: 0 0 15px #0ff;
+  text-shadow: 0 0 15px rgb(0, 0, 0);
 }

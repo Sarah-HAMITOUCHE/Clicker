@@ -1,56 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MusicClick - Jeu de clic cinéma</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>🎶 Music Clicker 🎶</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <h1>🎥 MusicClick</h1>
-        <div id="score">Points Musicales: <span id="points">0</span></div>
-        
-        <button id="clicker">
-            <img src="https://cdn-icons-png.flaticon.com/512/3629/3629070.png" alt="Caméra">
-            <br>Créer une Musique<br>
-        </button>
-        
-        <h2>🎬 Boutique de Musique </h2>
-        <div id="shop">
-            <div class="item" data-id="stagiaire" data-cost="50" data-production="2">
-                <button class="buy-btn">Acheter un guitare (+1/sec)</button>
-                <span class="cost">50 points</span>
-                <span class="owned">0</span>
-            </div>
-            <div class="item" data-id="camera" data-cost="150" data-production="4">
-                <button class="buy-btn">Acheter un piano (+3/sec)</button>
-                <span class="cost">150 points</span>
-                <span class="owned">0</span>
-            </div>
-            <div class="item" data-id="star" data-cost="300" data-production="6">
-                <button class="buy-btn"> Acheter des tenues (+5/sec)</button>
-                <span class="cost">300 points</span>
-                <span class="owned">0</span>
-            </div>
-        </div>
-        
-        <h2>🌟 Améliorations</h2>
-        <div id="upgrades">
-            <div class="upgrade" data-id="meilleur-script" data-cost="500">
-                <button class="upgrade-btn">Améliorer l'équipement son (x2 points/clic)</button>
-                <span class="cost">500 points</span>
-            </div>
-        </div>
-        <div id="upgrades">
-            <div class="upgrade" data-id="meilleur-script" data-cost="800">
-                <button class="upgrade-btn">Améliorer l'équipement de Production (x2 points/clic)</button>
-                <span class="cost">800 points</span>
-            </div>
-        </div>
-
-        <button id="reset-btn" class="reset-btn">Réinitialiser le jeu</button>
+  <div class="game-wrapper">
+    <!--Tableau Score-->
+    <div class="sidebar left">
+      <h2>🎵 Tes Beats</h2>
+      <p>Beats : <span id="score">0</span></p>
+      <p>Par clic : <span id="clickPower">1</span></p>
+      <p>Rythme : <span id="clickLevel">1</span></p>
+      <p>Amplis : <span id="ampCount">0</span></p>
+      <p>Groupes : <span id="bandCount">0</span></p>
+      <!-- Bouton Réinitialiser -->
+      <button id="resetGame">🔁 Réinitialiser le jeu</button>
     </div>
-    <script src="script.js"></script>
+
+    <!-- BOUTON CENTRAL -->
+    <div class="main">
+      <h1>🎶 Music Clicker 🎶</h1>
+      <div id="floatingTextContainer"></div>
+      <img id="clicker" src="assets/upscalemedia-transformed__6_-removebg-preview.png" alt="Bouton de clic" style="cursor: pointer; width: 200px; height: 100px;">
+    </div>
+
+    <!-- BOUTIQUE À DROITE -->
+    <div class="sidebar right">
+      <h2>🛒 Boutique</h2>
+      <button id="buyAmp">Ampli (10 beats)</button>
+      <button id="buyBand">🎤 Groupe (100 beats)</button>
+      <button id="upgradeClick">Améliorer le Clic (50 beats)</button>
+      <h3>⚡ Améliorations ⚡ </h3>
+      <div class="shop-category" id="upgrades-container" class="items-container">
+        <button id="buy-guitare">🎸Guitare (50 beats)</button>
+        <button id="buy-piano">🎹Piano (150 beats)</button>
+        <button id="buy-tenues">👗Tenues (300 beats)</button>
+      </div>
+    </div>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎵 MusicClick - Score</title>
+  <link rel="stylesheet" href="style/score.css" />
+</head>
+
+
+    <div class="score-display">
+      <h2>🎶 Vos Statistiques Musicales 🎶</h2>
+      <p>Tu as composé <span id="total-points">0</span> points musicaux.</p>
+      <p>Points par seconde : <span id="pps">0</span></p>
+      <p>Nombre total de clics : <span id="clicks">0</span></p>
+      <p>Meilleur score en une session : <span id="high-score">0</span></p>
+    </div>
+  </div>
+
+  <script>
+    // Chargement depuis le localStorage
+    const gameData = JSON.parse(localStorage.getItem("musicClickerSave")) || {
+      points: 0,
+      autoProduction: 0,
+      clickValue: 1,
+      totalClicks: 0,
+      bestScore: 0
+    };
+
+    document.getElementById("total-points").textContent = gameData.points || 0;
+    document.getElementById("pps").textContent = gameData.autoProduction || 0;
+    document.getElementById("clicks").textContent = gameData.totalClicks || 0;
+    document.getElementById("high-score").textContent = gameData.bestScore || 0;
+  </script>
+</body>
+</html>

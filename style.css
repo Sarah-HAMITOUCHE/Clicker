@@ -7,9 +7,9 @@
 }
 
 html, body {
-  background: #968f38;
-  font-family:Arial, Helvetica, sans-serif;
-  color: #010101;
+  background: #0f0f0f;
+  font-family: 'Orbitron', sans-serif;
+  color: #f5f5f5;
   overflow: hidden;
 }
 
@@ -21,18 +21,23 @@ html, body {
   width: 100vw;
   gap: 20px;
   padding: 30px;
+  background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
 }
 
 /* Zones latérales */
 .sidebar {
-  background: rgba(0, 0, 0, 0.633);
-  border-radius: 2px;
-  padding: 
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 20px;
   height: 100%;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.77);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
   overflow-y: auto;
 }
 
+.sidebar h2, .sidebar h3 {
+  color: #ffd700;
+  text-shadow: 0 0 5px #000;
+}
 
 .sidebar p {
   margin-bottom: 10px;
@@ -48,15 +53,20 @@ html, body {
 }
 
 #clicker {
-  font-size: 32px;
-  color: white;
-  border: none;
+  font-size: 40px;
+  color: #ffd700;
+  background: none;
+  border: 2px solid #ffd700;
+  padding: 20px 40px;
+  border-radius: 30px;
   cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
   transition: transform 0.2s, box-shadow 0.3s;
 }
 
 #clicker:hover {
   transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
 }
 
 #floatingTextContainer {
@@ -70,10 +80,10 @@ html, body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  color: #ffea00;
+  color: #ffd700;
   font-size: 22px;
   animation: floatUp 1s ease-out forwards;
-  text-shadow: 0 0 10px #ffea00;
+  text-shadow: 0 0 10px #ffd700;
   pointer-events: none;
 }
 
@@ -88,22 +98,23 @@ button {
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  background: #c0a31464;
-  border: 2px solid rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
-  border-radius: 10px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background: rgb(251, 251, 251);
-  color: #000;
+  background: #ffd700;
+  color: #1e1e1e;
   transform: scale(1.05);
 }
 
 h1 {
   margin-bottom: 30px;
-  font-size: 36px;
-  text-shadow: 0 0 15px rgb(0, 0, 0);
+  font-size: 48px;
+  color: #ffd700;
+  text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
 }

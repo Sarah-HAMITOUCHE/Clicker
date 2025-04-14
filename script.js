@@ -132,3 +132,4 @@ setInterval(() => {
 
 // Initialisation de l'affichage
 updateDisplay();
+

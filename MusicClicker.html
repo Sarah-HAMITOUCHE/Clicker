@@ -9,36 +9,63 @@
   <div class="game-wrapper">
     <!--Tableau Score-->
     <div class="sidebar left">
-      <h2>🎵 Tes Beats</h2>
+      <h2>Tes Beats</h2>
       <p>Beats : <span id="score">0</span></p>
       <p>Par clic : <span id="clickPower">1</span></p>
       <p>Rythme : <span id="clickLevel">1</span></p>
       <p>Amplis : <span id="ampCount">0</span></p>
       <p>Groupes : <span id="bandCount">0</span></p>
       <!-- Bouton Réinitialiser -->
-      <button id="resetGame">🔁 Réinitialiser le jeu</button>
-    </div>
+      <button id="resetGame"> Réinitialiser le jeu</button>
+      <h2>Joue nous quelque chose !</h2>
+      <p>Appuie sur play, et laisse la musique faire le reste ! </p>
+      <audio id="player" src="assets/bensound-lastnight.mp3"></audio>
+    
+<button onclick="playAudio()" style="background: none; border: none; padding: 0;">
+  <img src="assets/jouer.png"
+       alt="Play" style="cursor: pointer; width: 60px; height: 60px;">
+</button>
+
+<button onclick="pauseAudio()" style="background: none; border: none; padding: 0;">
+  <img src="assets/bouton-pause.png"
+       alt="Pause" style="cursor: pointer; width: 80px; height: 80px;">
+</button>
+  </div>
 
     <!-- BOUTON CENTRAL -->
+  
     <div class="main">
       <h1>🎶 Music Clicker 🎶</h1>
+      <h3><p>Transforme tes clics en hits !</p></h3>
       <div id="floatingTextContainer"></div>
-      <button id="clicker">🎵 Clique ici !</button>
+      <img id="clicker" src="assets/upscalemedia-transformed__6_-removebg-preview.png" alt="Bouton de clic" style="cursor: pointer; width: 200px; height: 100px;">
     </div>
 
     <!-- BOUTIQUE À DROITE -->
     <div class="sidebar right">
       <h2>🛒 Boutique</h2>
-      <button id="buyAmp">🎚️ Acheter un Ampli (10 beats)</button>
-      <button id="buyBand">🎤 Acheter un Groupe (100 beats)</button>
-      <button id="upgradeClick">⚡ Améliorer le Clic (50 beats)</button>
-      <h3>Améliorations</h3>
+      <button id="buyAmp">Ampli (10 beats)</button>
+      <button id="buyBand">🎤 Groupe (100 beats)</button>
+      <button id="upgradeClick">Améliorer le Clic (50 beats)</button>
+      <h3>⚡ Améliorations ⚡ </h3>
       <div class="shop-category" id="upgrades-container" class="items-container">
-        <button id="buy-guitare">🎸 Acheter une Guitare (50 beats)</button>
-        <button id="buy-piano">🎹 Acheter un Piano (150 beats)</button>
-        <button id="buy-tenues">👗 Acheter des Tenues (300 beats)</button>
+        <button id="buy-guitare">🎸Guitare (50 beats)</button>
+        <button id="buy-piano">🎹Piano (150 beats)</button>
+        <button id="buy-tenues">👗Tenues (300 beats)</button>
       </div>
     </div>
   <script src="script.js"></script>
+  <script>
+    const audio = document.getElementById("player");
+  
+    function playAudio() {
+      audio.play();
+    }
+  
+    function pauseAudio() {
+      audio.pause();
+    }
+  </script>
+  
 </body>
 </html>
